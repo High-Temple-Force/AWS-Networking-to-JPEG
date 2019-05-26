@@ -59,8 +59,12 @@
       color="blue-grey"
       class="white--text"
       @click="loader = 'loading3'"
+
     >
-      Download
+      <a
+      v-bind:href="this.$store.state.tagetImageUrl"
+      download="aws-test.jpeg"
+      style="text-decoration:none">Download</a>
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
     </dir>
