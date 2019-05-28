@@ -59,7 +59,6 @@
       color="blue-grey"
       class="white--text"
       @click="loader = 'loading3'"
-
     >
       <a
       v-bind:href="this.$store.state.tagetImageUrl"
@@ -124,7 +123,7 @@ export default {
       loading3: false,
       loading4: false,
       ec2selected: '',
-      ec2: [1,2,3],
+      ec2: [1,2],
       db:['RDS', 'EC2', 'なし'],
       dbselected: ''
     }
