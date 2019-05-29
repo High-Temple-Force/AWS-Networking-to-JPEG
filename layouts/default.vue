@@ -1,6 +1,7 @@
 
 <template>
   <v-app light>
+
     <v-container mt-10 pt-40>
     <v-toolbar
       :clipped-left="clipped"
@@ -13,11 +14,18 @@
     </v-toolbar>
     <br>
     <br>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch1"
       :label="`Load Balanceの有無 : ${StringtrueOrfalse}`"
       :value="trueOrfalse"
     ></v-switch>
+    </template>
+    <span>ここに説明を入れる！</span>
+
+    </v-tooltip>
     <br>
     <v-flex xs12 sm6 d-flex>
         <v-select
