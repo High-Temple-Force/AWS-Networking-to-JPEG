@@ -23,7 +23,7 @@
       :value="trueOrfalse"
     ></v-switch>
     </template>
-    <span>ここに説明を入れる！</span>
+    <span>ここにpopupさせたい説明を入れる！</span>
 
     </v-tooltip>
     <br>
@@ -46,11 +46,18 @@
           @input="selectdb"
         ></v-select>
     </v-flex>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch2"
       :label="`S3の有無 : ${StringtrueOrfalse2}`"
       :value="trueOrfalse2"
     ></v-switch>
+    </template>
+    <span>This contains pop up mes!</span>
+
+    </v-tooltip>
     <br>
     <dir>
     <p>{{ this.$store.commit('setImageUrl') }}</p>
