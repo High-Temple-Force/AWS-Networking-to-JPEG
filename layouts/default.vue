@@ -55,7 +55,7 @@
       :value="trueOrfalse2"
     ></v-switch>
     </template>
-    <span>This contains pop up mes!</span>
+    <span>This contains pop up mes!ここに書いてね</span>
 
     </v-tooltip>
     <br>
