@@ -1,3 +1,4 @@
+
 <template>
   <v-app light>
     <v-container mt-10 pt-40>
@@ -47,11 +48,9 @@
     <p>{{ this.$store.commit('setImageUrl') }}</p>
     <p>{{ this.$store.state.targetImageUrl }}</p>
     <br>
-    <!--
-  　<img class="img" :src="this.$store.state.testImage2" />
+    
+  　<img class="img" :src="$store.state.targetImageUrl" />
 
-    <img class="img" :src="this.$store.state.testImage" />
-    -->
     <br>
     <v-btn
       :loading="loading3"
@@ -124,7 +123,7 @@ export default {
       loading4: false,
       ec2selected: '',
       ec2: [1,2],
-      db:['RDS', 'EC2', 'なし'],
+      db:['RDS', 'EC2', 'ローカル'],
       dbselected: ''
     }
   },
@@ -176,5 +175,8 @@ export default {
     to {
       transform: rotate(360deg);
     }
+  }
+  img {
+    width: 90%;
   }
 </style>

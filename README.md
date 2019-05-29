@@ -26,3 +26,9 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
+# Tips
+1. グラデーションの例
+https://webgradients.com/
+2. デザインの例
+https://dribbble.com/shots
+
