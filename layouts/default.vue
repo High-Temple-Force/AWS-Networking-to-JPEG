@@ -1,6 +1,7 @@
 
 <template>
   <v-app light>
+
     <v-container mt-10 pt-40>
     <v-toolbar
       :clipped-left="clipped"
@@ -13,11 +14,18 @@
     </v-toolbar>
     <br>
     <br>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch1"
       :label="`Load Balanceの有無 : ${StringtrueOrfalse}`"
       :value="trueOrfalse"
     ></v-switch>
+    </template>
+    <span>ここにpopupさせたい説明を入れる！</span>
+
+    </v-tooltip>
     <br>
     <v-flex xs12 sm6 d-flex>
         <v-select
@@ -38,11 +46,18 @@
           @input="selectdb"
         ></v-select>
     </v-flex>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch2"
       :label="`S3の有無 : ${StringtrueOrfalse2}`"
       :value="trueOrfalse2"
     ></v-switch>
+    </template>
+    <span>This contains pop up mes!ここに書いてね</span>
+
+    </v-tooltip>
     <br>
     <dir>
     <p>{{ this.$store.commit('setImageUrl') }}</p>
@@ -52,6 +67,10 @@
   　<img class="img" :src="$store.state.targetImageUrl" />
 
     <br>
+    <a
+      v-bind:href="`${this.$store.state.tagetImageUrl}/image.png`"
+      download="aws-test.jpeg"
+      style="text-decoration:none">
     <v-btn
       :loading="loading3"
       :disabled="loading3"
@@ -59,12 +78,10 @@
       class="white--text"
       @click="loader = 'loading3'"
     >
-      <a
-      v-bind:href="this.$store.state.tagetImageUrl"
-      download="aws-test.jpeg"
-      style="text-decoration:none">Download</a>
+      Download
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
+    </a>
     </dir>
     <v-footer
     :fixed="fixed"
