@@ -67,6 +67,10 @@
   　<img class="img" :src="$store.state.targetImageUrl" />
 
     <br>
+    <a
+      v-bind:href="`${this.$store.state.tagetImageUrl}/image.png`"
+      download="aws-test.jpeg"
+      style="text-decoration:none">
     <v-btn
       :loading="loading3"
       :disabled="loading3"
@@ -74,12 +78,10 @@
       class="white--text"
       @click="loader = 'loading3'"
     >
-      <a
-      v-bind:href="this.$store.state.tagetImageUrl"
-      download="aws-test.jpeg"
-      style="text-decoration:none">Download</a>
+      Download
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
+    </a>
     </dir>
     <v-footer
     :fixed="fixed"
