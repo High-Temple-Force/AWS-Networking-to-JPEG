@@ -2,7 +2,6 @@ export const state = () => ({
   testImage: '/Elastic-Load-Balancing-ELB.png',
   testImage2: '/Amazon-Simple-Storage-Service-S3.png',
   baseImageUrl: 'https://s3-ap-northeast-1.amazonaws.com/aws-networking-to-jpeg',
-  baseDir:'/0/0/0/0',
   LB: 0,
   EC2: 1,
   DB: 0,
@@ -18,7 +17,7 @@ export const mutations = {
     state.testImage2 = value
   },
   setImageUrl(state) {
-    state.targetImageUrl = `${state.baseImageUrl}/${state.LB}/${state.EC2}/${state.DB}/${state.S3}`
+    state.targetImageUrl = `${state.baseImageUrl}/${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
   },
   setLB(state, value) {
     state.LB = value

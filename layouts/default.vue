@@ -1,5 +1,7 @@
+
 <template>
   <v-app light>
+
     <v-container mt-10 pt-40>
     <v-toolbar
       :clipped-left="clipped"
@@ -12,11 +14,18 @@
     </v-toolbar>
     <br>
     <br>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch1"
       :label="`Load Balanceの有無 : ${StringtrueOrfalse}`"
       :value="trueOrfalse"
     ></v-switch>
+    </template>
+    <span>ここにpopupさせたい説明を入れる！</span>
+
+    </v-tooltip>
     <br>
     <v-flex xs12 sm6 d-flex>
         <v-select
@@ -37,21 +46,26 @@
           @input="selectdb"
         ></v-select>
     </v-flex>
+    <v-tooltip bottom>
+    <template v-slot:activator="{ on }">
     <v-switch
+      v-on="on"
       v-model="switch2"
       :label="`S3の有無 : ${StringtrueOrfalse2}`"
       :value="trueOrfalse2"
     ></v-switch>
+    </template>
+    <span>This contains pop up mes!ここに書いてね</span>
+
+    </v-tooltip>
     <br>
     <dir>
     <p>{{ this.$store.commit('setImageUrl') }}</p>
     <p>{{ this.$store.state.targetImageUrl }}</p>
     <br>
-    <!--
-  　<img class="img" :src="this.$store.state.testImage2" />
+    
+  　<img class="img" :src="$store.state.targetImageUrl" />
 
-    <img class="img" :src="this.$store.state.testImage" />
-    -->
     <br>
     <v-btn
       :loading="loading3"
@@ -124,7 +138,7 @@ export default {
       loading4: false,
       ec2selected: '',
       ec2: [1,2],
-      db:['RDS', 'EC2', 'なし'],
+      db:['RDS', 'EC2', 'ローカル'],
       dbselected: ''
     }
   },
@@ -176,5 +190,8 @@ export default {
     to {
       transform: rotate(360deg);
     }
+  }
+  img {
+    width: 90%;
   }
 </style>
