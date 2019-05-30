@@ -1,7 +1,7 @@
 export const state = () => ({
   testImage: '/Elastic-Load-Balancing-ELB.png',
   testImage2: '/Amazon-Simple-Storage-Service-S3.png',
-  baseImageUrl: 'https://s3-ap-northeast-1.amazonaws.com/takuto',
+  baseImageUrl: 'https://s3-ap-northeast-1.amazonaws.com/aws-networking-to-jpeg',
   baseDir:'/0/0/0/0',
   LB: 0,
   EC2: 1,
