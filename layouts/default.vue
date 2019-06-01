@@ -63,7 +63,7 @@
     <p>{{ this.$store.commit('setImageUrl') }}</p>
     <p>{{ this.$store.state.targetImageUrl }}</p>
     <br>
-    
+
   　<img class="img" :src="$store.state.targetImageUrl" />
 
     <br>
@@ -76,8 +76,9 @@
     >
       <a
       v-bind:href="this.$store.state.tagetImageUrl"
-      download="aws-test.jpeg"
-      style="text-decoration:none">Download</a>
+      download="aws-test.jpeg">
+      <font color="white">Download</font>
+      </a>
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
     </dir>
@@ -91,7 +92,7 @@
         xs12
       >
         <strong>&copy;2019 — PjKoenji</strong>
-      </v-flex>
+    </v-flex>
     </v-footer>
   </v-container >
   </v-app>
@@ -155,6 +156,9 @@ export default {
 
 
 <style>
+  a {
+    color: whitesmoke;
+  }
   .custom-loader {
     animation: loader 1s infinite;
     display: flex;

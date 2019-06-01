@@ -31,4 +31,13 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 https://webgradients.com/
 2. デザインの例
 https://dribbble.com/shots
+3. 環境変数の設定
+```
+$ npm i aws-sdk
+$ npm i dotenv
+```
+```.env
+ex)
+AWS_ACCESS_KEY = 'hogehoge'
+```
 
