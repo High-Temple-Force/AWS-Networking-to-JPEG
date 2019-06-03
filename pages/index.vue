@@ -75,7 +75,6 @@
       @click="loader = 'loading3'; downloadtest()"
     >
       <a
-      v-bind:href="this.$store.state.tagetImageUrl"
       download="aws-test.jpeg">
       <font color="white">Download</font>
       </a>
