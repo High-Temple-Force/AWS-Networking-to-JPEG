@@ -72,7 +72,7 @@
       :disabled="loading3"
       color="blue-grey"
       class="white--text"
-      @click="loader = 'loading3'"
+      @click="loader = 'loading3'; downloadtest()"
     >
       <a
       v-bind:href="this.$store.state.tagetImageUrl"
@@ -99,8 +99,6 @@
 </template>
 
 <script>
-const AWS = require('aws-sdk')
-const axios = require('axios')
 export default {
   computed:{
     StringtrueOrfalse: function () {
@@ -121,6 +119,23 @@ export default {
     // here have to get index of db array!
     selectdb: function() {
       if (this.dbselected) this.$store.dispatch('writeDB', this.db.findIndex(item => item === this.dbselected))
+    },
+
+  },
+  methods:{
+    downloadImage: function() {
+      axios({
+        url: this.$store.getters.getTargetImageUrl,
+        method: 'GET',
+        responceType: 'blob',
+      }).then((responce) => {
+
+      }).catch((err) => {
+
+      });
+    },
+    downloadtest: function() {
+      this.$store.commit('downloadImage')
     }
   },
   data() {

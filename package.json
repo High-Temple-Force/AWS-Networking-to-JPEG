@@ -17,6 +17,7 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
+    "js-file-download": "^0.4.7",
     "nuxt": "^2.4.0",
     "vuetify": "^1.5.5",
     "vuetify-loader": "^1.2.1",
