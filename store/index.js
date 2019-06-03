@@ -1,3 +1,5 @@
+const AWS = require('aws-sdk')
+
 export const state = () => ({
   testImage: '/Elastic-Load-Balancing-ELB.png',
   testImage2: '/Amazon-Simple-Storage-Service-S3.png',
