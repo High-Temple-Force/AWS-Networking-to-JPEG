@@ -14,6 +14,7 @@
     </v-toolbar>
     <br>
     <br>
+    <!--
     <v-tooltip bottom>
     <template v-slot:activator="{ on }">
     <v-switch
@@ -26,16 +27,36 @@
     <span>ここにpopupさせたい説明を入れる！</span>
 
     </v-tooltip>
+    -->
     <br>
-    <v-flex xs12 sm6 d-flex>
-        <v-select
-          :items="ec2"
-          :label="`EC2の数: ${ec2selected}`"
-          v-model="ec2selected"
-          return-object
-          @input="countec2"
-        ></v-select>
+    <v-flex >
+    <v-tooltip left bottom>
+      <template v-slot:activator="{ on }">
+      <span v-on="on">EC2の数</span>
+      </template>
+      <span>This contains!ここに書いてね</span>
+    </v-tooltip>
+    <v-radio-group
+      row
+      v-bind="countec2"
+        return-object
+      >
+      <v-radio
+        label= 1
+        value=1
+
+        ></v-radio>
+      <v-radio
+        label= 2
+        value=2
+        ></v-radio>
+    </v-radio-group>
     </v-flex>
+    <v-flex>
+
+
+    </v-flex>
+    <!--
 
     <v-flex xs12 sm6 d-flex>
         <v-select
@@ -58,39 +79,36 @@
     <span>This contains pop up mes!ここに書いてね</span>
 
     </v-tooltip>
-    <br>
-    <dir>
+    -->
     <p>{{ this.$store.commit('setImageUrl') }}</p>
     <p>{{ this.$store.state.targetImageUrl }}</p>
     <br>
 
   　<img class="img" :src="$store.state.targetImageUrl" />
-
-    <br>
     <v-btn
       :loading="loading3"
       :disabled="loading3"
       color="blue-grey"
       class="white--text"
-      @click="loader = 'loading3'; downloadtest()"
+      @click="loader = 'loading3'"
     >
-      <a
-      download="aws-test.jpeg">
-      <font color="white">Download</font>
-      </a>
+    <a href="v.png" download="test.png">
+      <font color="white">Download</font></a>
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
-    </dir>
+    <br>
+    <br>
+    <br>
     <v-footer
-    :fixed="fixed"
-    app
+      :fixed="fixed"
+      app
     >
     <v-flex
-        py-3
-        text-xs-center
-        xs12
-      >
-        <strong>&copy;2019 — PjKoenji</strong>
+      py-3
+      text-xs-center
+      xs12
+    >
+    <strong>&copy;2019 — PjKoenji</strong>
     </v-flex>
     </v-footer>
   </v-container >
@@ -156,7 +174,8 @@ export default {
       ec2selected: '',
       ec2: [1,2],
       db:['RDS', 'EC2', 'ローカル'],
-      dbselected: ''
+      dbselected: '',
+      row: null,
     }
   },
   watch: {
