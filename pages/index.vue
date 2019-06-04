@@ -37,19 +37,18 @@
       <span>This contains!ここに書いてね</span>
     </v-tooltip>
     <v-radio-group
-      row
-      v-bind="countec2"
+        row
+        v-bind="countec2"
         return-object
       >
       <v-radio
         label= 1
         value=1
-
-        ></v-radio>
+      ></v-radio>
       <v-radio
         label= 2
         value=2
-        ></v-radio>
+      ></v-radio>
     </v-radio-group>
     </v-flex>
     <v-flex>
@@ -92,7 +91,7 @@
       class="white--text"
       @click="loader = 'loading3'"
     >
-    <a href="v.png" download="test.png">
+    <a :href="$store.getters.getTargetImageUrl" download="test.png">
       <font color="white">Download</font></a>
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>

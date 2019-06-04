@@ -21,7 +21,7 @@ export const mutations = {
     state.testImage2 = value
   },
   setImageUrl(state) {
-    state.targetImageUrl = `${state.baseImageUrl}/${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
+    state.targetImageUrl = `${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
   },
   setLB(state, value) {
     state.LB = value
