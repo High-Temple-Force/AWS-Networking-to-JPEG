@@ -1,7 +1,6 @@
 
 <template>
   <v-app light>
-
     <v-container mt-10 pt-40>
     <v-toolbar
       :clipped-left="clipped"
@@ -14,23 +13,10 @@
     </v-toolbar>
     <br>
     <br>
-    <!--
-    <v-tooltip bottom>
-    <template v-slot:activator="{ on }">
-    <v-switch
-      v-on="on"
-      v-model="switch1"
-      :label="`Load Balanceの有無 : ${StringtrueOrfalse}`"
-      :value="trueOrfalse"
-    ></v-switch>
-    </template>
-    <span>ここにpopupさせたい説明を入れる！</span>
 
-    </v-tooltip>
-    -->
     <br>
     <v-flex >
-    <v-tooltip left bottom>
+    <v-tooltip right>
       <template v-slot:activator="{ on }">
       <span v-on="on">EC2の数</span>
       </template>
@@ -38,47 +24,69 @@
     </v-tooltip>
     <v-radio-group
         row
-        v-bind="countec2"
-        return-object
+        :model="ec2selected"
       >
       <v-radio
-        label= 1
-        value=1
+        :label= 1
+        :value=1
       ></v-radio>
       <v-radio
-        label= 2
-        value=2
+        :label= 2
+        :value=2
       ></v-radio>
     </v-radio-group>
     </v-flex>
     <v-flex>
 
-
-    </v-flex>
-    <!--
-
-    <v-flex xs12 sm6 d-flex>
-        <v-select
-          :items="db"
-          :label="`データベースの種類: ${dbselected}`"
-          v-model="dbselected"
-          return-object
-          @input="selectdb"
-        ></v-select>
-    </v-flex>
-    <v-tooltip bottom>
-    <template v-slot:activator="{ on }">
-    <v-switch
-      v-on="on"
-      v-model="switch2"
-      :label="`S3の有無 : ${StringtrueOrfalse2}`"
-      :value="trueOrfalse2"
-    ></v-switch>
-    </template>
-    <span>This contains pop up mes!ここに書いてね</span>
-
+    <v-tooltip right>
+      <template v-slot:activator="{ on }">
+      <span v-on="on">データベースの種類</span>
+      </template>
+      <span>This contains!ここに書いてね</span>
     </v-tooltip>
-    -->
+    <v-radio-group
+        row
+        v-model="dbselected"
+      >
+      <v-radio
+        label="RDS"
+        :value=0
+      ></v-radio>
+      <v-radio
+        label="EC2"
+        :value=1
+      ></v-radio>
+      <v-radio
+        label="ローカル"
+        :value="2"
+      ></v-radio>
+    </v-radio-group>
+    </v-flex>
+    <p>{{ dbselected }}</p>
+
+    <v-flex>
+    <v-tooltip right>
+      <template v-slot:activator="{ on }">
+      <span v-on="on">S3の有無</span>
+      </template>
+      <span>This contains!ここに書いてね</span>
+    </v-tooltip>
+    <v-radio-group
+        row
+        v-model="s3selected"
+        v-bind="s3selected"
+    >
+      <v-radio
+        label="有り"
+        value=0
+      ></v-radio>
+      <v-radio
+        label="無し"
+        value=1
+      ></v-radio>
+    </v-radio-group>
+    </v-flex>
+
     <p>{{ this.$store.commit('setImageUrl') }}</p>
     <p>{{ this.$store.state.targetImageUrl }}</p>
     <br>
@@ -129,30 +137,9 @@ export default {
     trueOrfalse2: function() {
       this.switch2 ? this.$store.dispatch('writeS3',1) : this.$store.dispatch('writeS3',0)
     },
-    countec2: function() {
-      if (this.ec2selected) this.$store.dispatch('writeEC2', this.ec2selected)
-    },
-    // here have to get index of db array!
-    selectdb: function() {
-      if (this.dbselected) this.$store.dispatch('writeDB', this.db.findIndex(item => item === this.dbselected))
-    },
-
   },
   methods:{
-    downloadImage: function() {
-      axios({
-        url: this.$store.getters.getTargetImageUrl,
-        method: 'GET',
-        responceType: 'blob',
-      }).then((responce) => {
 
-      }).catch((err) => {
-
-      });
-    },
-    downloadtest: function() {
-      this.$store.commit('downloadImage')
-    }
   },
   data() {
     return {
@@ -170,20 +157,31 @@ export default {
       loading2: false,
       loading3: false,
       loading4: false,
-      ec2selected: '',
+      dbselected: '',
+      s3selected: '',
       ec2: [1,2],
       db:['RDS', 'EC2', 'ローカル'],
-      dbselected: '',
       row: null,
+      ec2selected: '',
     }
   },
   watch: {
     loader() {
-       const l = this.loader
-        this[l] = !this[l]
-        setTimeout(() => (this[l] = false), 3000)
-        this.loader = null
+      const l = this.loader
+      this[l] = !this[l]
+      setTimeout(() => (this[l] = false), 3000)
+      this.loader = null
     },
+    selectdb () {
+      if (this.dbselected) this.$store.dispatch('writeDB', this.dbselected)
+    },
+    selects3 () {
+      if (this.s3selected) this.$store.dispatch('writeS3', this.s3selected)
+    },
+    ec2selected () {
+      this.$store.dispatch('writeEC2', this.ec2selected)
+    },
+
   },
 }
 </script>

@@ -36,31 +36,6 @@ export const mutations = {
   setS3(state, value) {
     state.S3 = value
   },
-  downloadImage(state) {
-    console.log(22)
-    const s3Client = new AWS.S3({
-      accessKeyId: process.env.AWS_ACCESS_KEY,
-      secretAccessKey: process.env.AWS_SECRET_KEY,
-      region: process.env.AWS_S3_REGION,
-    });
-    axios.get(state.targetImageUrl, (req, res) => {
-      console.log(req)
-      const { filename } = req.query
-      res.attachment(filename)
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-      // adding responce header
-      const params = {
-        Bucket: process.env.AWS_S3_BUCKET,
-        Key: filename,
-      }
-      s3Client.getObject(params)
-        .createReadStream()
-        .on('error', err => {
-          res.status(500).send({error: err})
-        })
-        .pipe(res)
-    })
-  }
 }
 
 // ${state.baseImageUrl}/${state.LB[0]}/${state.EC2[0]}/${state.DB[0]}/${state.S3[0]
