@@ -1,16 +1,13 @@
-const AWS = require('aws-sdk')
-const axios = require('axios')
-
-
 export const state = () => ({
   testImage: '/Elastic-Load-Balancing-ELB.png',
   testImage2: '/Amazon-Simple-Storage-Service-S3.png',
-  baseImageUrl: 'https://s3-ap-northeast-1.amazonaws.com/aws-networking-to-jpeg',
+  baseImageUrl: 'https://aws-networking-to-jpeg.s3-ap-northeast-1.amazonaws.com/',
   LB: 0,
   EC2: 1,
   DB: 0,
   S3: 0,
   targetImageUrl: ``,
+  s3ImageUrl: '',
 })
 
 export const mutations = {
@@ -22,6 +19,7 @@ export const mutations = {
   },
   setImageUrl(state) {
     state.targetImageUrl = `${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
+    state.s3ImageUrl = state.baseImageUrl + state.targetImageUrl
   },
   setLB(state, value) {
     state.LB = value

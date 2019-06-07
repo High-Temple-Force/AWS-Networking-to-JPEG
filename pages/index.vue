@@ -20,19 +20,21 @@
       <template v-slot:activator="{ on }">
       <span v-on="on">EC2の数</span>
       </template>
+      <!--ここにEC2の文言入れる-->
       <span>This contains!ここに書いてね</span>
     </v-tooltip>
     <v-radio-group
         row
-        :model="ec2selected"
+        v-model="ec2selected"
+        @change="countec2"
       >
       <v-radio
-        :label= 1
-        :value=1
+        label=1
+        value=1
       ></v-radio>
       <v-radio
-        :label= 2
-        :value=2
+        label=2
+        value=2
       ></v-radio>
     </v-radio-group>
     </v-flex>
@@ -42,19 +44,21 @@
       <template v-slot:activator="{ on }">
       <span v-on="on">データベースの種類</span>
       </template>
+      <!--ここにDBの文言入れる-->
       <span>This contains!ここに書いてね</span>
     </v-tooltip>
     <v-radio-group
         row
         v-model="dbselected"
+        @change="selectdb"
       >
       <v-radio
         label="RDS"
-        :value=0
+        value=0
       ></v-radio>
       <v-radio
         label="EC2"
-        :value=1
+        value=1
       ></v-radio>
       <v-radio
         label="ローカル"
@@ -62,36 +66,45 @@
       ></v-radio>
     </v-radio-group>
     </v-flex>
-    <p>{{ dbselected }}</p>
 
     <v-flex>
     <v-tooltip right>
       <template v-slot:activator="{ on }">
       <span v-on="on">S3の有無</span>
       </template>
+      <!--ここにS3の文言入れる-->
       <span>This contains!ここに書いてね</span>
     </v-tooltip>
     <v-radio-group
         row
         v-model="s3selected"
-        v-bind="s3selected"
+        @change="selects3"
     >
       <v-radio
         label="有り"
-        value=0
+        value=1
       ></v-radio>
       <v-radio
         label="無し"
-        value=1
+        value=0
       ></v-radio>
     </v-radio-group>
     </v-flex>
 
     <p>{{ this.$store.commit('setImageUrl') }}</p>
-    <p>{{ this.$store.state.targetImageUrl }}</p>
+    <!--
+      <p>{{ this.$store.state.targetImageUrl }}</p>
+    -->
     <br>
-
-  　<img class="img" :src="$store.state.targetImageUrl" />
+    <!--ここに画像のUrlいれる-->
+    <div>
+  　  <img class="img" :src="$store.state.s3ImageUrl" />
+    </div>
+    <a
+      :href="$store.getters.getTargetImageUrl"
+      download="test.png"
+      style="text-decoration:none"
+    >
     <v-btn
       :loading="loading3"
       :disabled="loading3"
@@ -99,10 +112,10 @@
       class="white--text"
       @click="loader = 'loading3'"
     >
-    <a :href="$store.getters.getTargetImageUrl" download="test.png">
-      <font color="white">Download</font></a>
+      <font color="white">Download</font>
       <v-icon right dark>cloud_download</v-icon>
     </v-btn>
+    </a>
     <br>
     <br>
     <br>
@@ -137,6 +150,15 @@ export default {
     trueOrfalse2: function() {
       this.switch2 ? this.$store.dispatch('writeS3',1) : this.$store.dispatch('writeS3',0)
     },
+    countec2 () {
+      if (this.ec2selected) this.$store.dispatch('writeEC2', this.ec2selected)
+    },
+    selectdb () {
+      if (this.dbselected) this.$store.dispatch('writeDB', this.dbselected)
+    },
+    selects3 () {
+      if (this.s3selected) this.$store.dispatch('writeS3', this.s3selected)
+    },
   },
   methods:{
 
@@ -162,7 +184,7 @@ export default {
       ec2: [1,2],
       db:['RDS', 'EC2', 'ローカル'],
       row: null,
-      ec2selected: '',
+      ec2selected: 2,
     }
   },
   watch: {
@@ -172,16 +194,6 @@ export default {
       setTimeout(() => (this[l] = false), 3000)
       this.loader = null
     },
-    selectdb () {
-      if (this.dbselected) this.$store.dispatch('writeDB', this.dbselected)
-    },
-    selects3 () {
-      if (this.s3selected) this.$store.dispatch('writeS3', this.s3selected)
-    },
-    ec2selected () {
-      this.$store.dispatch('writeEC2', this.ec2selected)
-    },
-
   },
 }
 </script>
