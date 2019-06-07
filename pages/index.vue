@@ -13,15 +13,14 @@
     </v-toolbar>
     <br>
     <br>
-
     <br>
     <v-flex >
     <v-tooltip right>
       <template v-slot:activator="{ on }">
       <span v-on="on">EC2の数</span>
       </template>
-      <!--ここにEC2の文言入れる-->
-      <span>This contains!ここに書いてね</span>
+      <!--ここにEC2の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+      <span>{{ec2Description}}</span>
     </v-tooltip>
     <v-radio-group
         row
@@ -44,8 +43,8 @@
       <template v-slot:activator="{ on }">
       <span v-on="on">データベースの種類</span>
       </template>
-      <!--ここにDBの文言入れる-->
-      <span>This contains!ここに書いてね</span>
+      <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+      <span>{{dbDescription}}</span>
     </v-tooltip>
     <v-radio-group
         row
@@ -72,8 +71,8 @@
       <template v-slot:activator="{ on }">
       <span v-on="on">S3の有無</span>
       </template>
-      <!--ここにS3の文言入れる-->
-      <span>This contains!ここに書いてね</span>
+      <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+      <span>{{s3Description}}</span>
     </v-tooltip>
     <v-radio-group
         row
@@ -138,6 +137,7 @@
 <script>
 export default {
   computed:{
+    /*
     StringtrueOrfalse: function () {
       return this.switch1 ? 'あり' : 'なし';
     },
@@ -150,6 +150,7 @@ export default {
     trueOrfalse2: function() {
       this.switch2 ? this.$store.dispatch('writeS3',1) : this.$store.dispatch('writeS3',0)
     },
+    */
     countec2 () {
       if (this.ec2selected) this.$store.dispatch('writeEC2', this.ec2selected)
     },
@@ -172,8 +173,8 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'AWS Networking to JPEG',
-      switch1: true,
-      switch2: true,
+      // switch1: true,
+      // switch2: true,
       loader: null,
       loading: false,
       loading2: false,
@@ -181,10 +182,12 @@ export default {
       loading4: false,
       dbselected: '',
       s3selected: '',
-      ec2: [1,2],
       db:['RDS', 'EC2', 'ローカル'],
       row: null,
       ec2selected: 2,
+      ec2Description:'これで映るラ', //ec2の説明、ポップアップの内容
+      dbDescription:'これで映るイラ', //dbの説明、ポップアップの内容
+      s3Description:'これで映るカイラ', //s3の説明、ポップアップの内容
     }
   },
   watch: {
