@@ -7,7 +7,8 @@
       fixed
       app
       dark
-      color="orange lighten-1"    >
+      color="orange lighten-1"
+      flat>
       <v-toolbar-title v-text="title" />
       <v-spacer />
     </v-toolbar>
