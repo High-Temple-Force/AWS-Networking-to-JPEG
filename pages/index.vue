@@ -7,6 +7,7 @@
         fixed
         app
         dense
+        flat
        >
         <v-toolbar-title v-text="title" />
 
@@ -18,7 +19,7 @@
         <div class="content">
           <v-tooltip right>
             <template v-slot:activator="{ on }" >
-              <span v-on="on">EC2の数</span>
+              <span v-on="on">EC2の数<v-icon v-on="on">info</v-icon></span>
             </template>
             <!--ここにEC2の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
             <div class="description">{{ec2Description}}</div>
@@ -43,7 +44,7 @@
         <div class="content">
           <v-tooltip right>
             <template v-slot:activator="{ on }">
-            <span v-on="on">データベースの種類</span>
+            <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
             <span>{{dbDescription}}</span>
@@ -73,7 +74,7 @@
         <div class="content">
           <v-tooltip right>
             <template v-slot:activator="{ on }">
-            <span v-on="on">S3の有無</span>
+            <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
             <span>{{s3Description}}</span>
