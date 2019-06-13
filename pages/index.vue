@@ -16,6 +16,9 @@
       <br>
       <br>
       <v-flex >
+        <div>
+          <h3 v-text="siteDiscription"></h3>
+        </div>
         <div class="content">
           <v-tooltip right>
             <template v-slot:activator="{ on }" >
@@ -183,6 +186,7 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'AWS Networking to JPEG',
+      siteDiscription: 'AWSネットワークを、画像で可視化しましょう。',
       // switch1: true,
       // switch2: true,
       loader: null,
