@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "node-playground",
   "version": "1.0.0",
   "description": "My epic Nuxt.js project",
   "author": "bluesDD",
@@ -35,5 +35,10 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
     "vue-jest": "^3.0.3"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "ISC"
 }
