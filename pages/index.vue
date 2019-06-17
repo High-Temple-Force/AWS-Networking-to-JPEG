@@ -186,7 +186,8 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'AWS Networking to JPEG',
-      siteDiscription: 'AWSネットワークを、画像で可視化しましょう。',
+      siteDiscription: `簡単なAWSネットワークを、画像で可視化しましょう。\n
+      選択肢をすべて選んだら、Downloadボタンを押して画像を入手してみてください。`,
       // switch1: true,
       // switch2: true,
       loader: null,
