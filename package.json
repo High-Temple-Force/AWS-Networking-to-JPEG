@@ -1,5 +1,5 @@
 {
-  "name": "AWS Network To Jpeg",
+  "name": "AWSToJpeg",
   "version": "1.1.0",
   "description": "My epic Nuxt.js project",
   "author": "bluesDD",
@@ -12,10 +12,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
-    "@fortawesome/vue-fontawesome": "^0.1.6",
-    "aws-sdk": "^2.466.0",
     "axios": "^0.19.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
