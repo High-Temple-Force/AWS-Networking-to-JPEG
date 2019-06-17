@@ -8,6 +8,7 @@
         app
         dense
         flat
+        color="rgb(240, 240, 240)"
        >
         <v-toolbar-title v-text="title" />
 
@@ -134,6 +135,7 @@
       <v-footer
         :fixed="fixed"
         app
+        color="rgb(240, 240, 240)"
       >
       <v-flex
         py-3
