@@ -1,4 +1,3 @@
-
 <template>
   <v-app light>
     <v-container mt-10 pt-40>
@@ -11,12 +10,14 @@
         color="rgb(240, 240, 240)"
        >
         <v-toolbar-title v-text="title" />
-
       </v-toolbar>
       <br>
       <br>
       <br>
       <v-flex >
+        <div>
+          <h2 v-text="titleDiscription"></h2>
+        </div>
         <div>
           <h3 v-text="siteDiscription"></h3>
         </div>
@@ -73,7 +74,6 @@
           </v-radio-group>
         </div>
       </v-flex>
-
       <v-flex>
         <div class="content">
           <v-tooltip right>
@@ -99,7 +99,6 @@
           </v-radio-group>
         </div>
       </v-flex>
-
       <p>{{ this.$store.commit('setImageUrl') }}</p>
       <!--
         <p>{{ this.$store.state.targetImageUrl }}</p>
@@ -129,7 +128,6 @@
       </v-btn>
       </a>
       </v-flex>
-      <br>
       <br>
       <br>
       <v-footer
@@ -177,7 +175,6 @@ export default {
     },
   },
   methods:{
-
   },
   data() {
     return {
@@ -187,7 +184,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'AWS Networking to JPEG',
+      title: `Clage`,
+      titleDiscription: `全ての人に、クラウドの価値を提供する`,
       siteDiscription: `簡単なAWSネットワークを、画像で可視化しましょう。\n
       選択肢をすべて選んだら、Downloadボタンを押して画像を入手してみてください。`,
       // switch1: true,
@@ -218,9 +216,7 @@ export default {
 }
 </script>
 
-
 <style>
-
   .container {
     text-align: left;
     margin: 0 auto;
@@ -230,7 +226,6 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
-
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
@@ -283,7 +278,6 @@ export default {
       transform: rotate(360deg);
     }
   }
-
   .v-tooltip__content {
     width: 50%;
   }
@@ -292,5 +286,4 @@ export default {
     margin: 0 auto;
     text-align: center;
   }
-
 </style>
