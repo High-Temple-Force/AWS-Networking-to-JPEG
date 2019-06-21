@@ -112,7 +112,7 @@
       </v-flex>
       <v-flex>
       <a
-        :href="$store.getters.getTargetImageUrl"
+        :href="$store.getters.getTargetImageName"
         download="test.png"
         style="text-decoration:none"
       >

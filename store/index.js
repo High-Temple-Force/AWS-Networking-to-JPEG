@@ -9,6 +9,7 @@ export const state = () => ({
   S3: 0,
   targetImageUrl: ``,
   s3ImageUrl: '',
+  targetImageName: '',
 })
 
 export const mutations = {
@@ -21,6 +22,7 @@ export const mutations = {
   */
   setImageUrl(state) {
     state.targetImageUrl = `${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
+    state.targetImageName = `${state.LB}${state.EC2}${state.DB}${state.S3}.png`
     state.s3ImageUrl = state.baseImageUrl + state.targetImageUrl
   },
   setLB(state, value) {
@@ -66,6 +68,9 @@ export const actions = {
 export const getters = {
   getTargetImageUrl: state => {
     return state.targetImageUrl
+  },
+  getTargetImageName: state => {
+    return state.targetImageName
   }
 }
 
