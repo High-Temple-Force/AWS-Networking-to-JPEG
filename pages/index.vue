@@ -36,11 +36,11 @@
             >
             <v-radio
               label=1
-              value=1
+              value=0
             ></v-radio>
             <v-radio
               label=2
-              value=2
+              value=1
             ></v-radio>
           </v-radio-group>
         </div>
@@ -69,7 +69,7 @@
             ></v-radio>
             <v-radio
               label="ローカル"
-              :value="2"
+              :value=2
             ></v-radio>
           </v-radio-group>
         </div>
@@ -107,13 +107,13 @@
       <!--ここに画像のUrlいれる-->
       <v-flex>
         <div class="img">
-      　  <img class="img" :src="$store.state.s3ImageUrl" />
+      　  <img class="img" :src="$store.state.targetImageName" />
         </div>
       </v-flex>
       <v-flex>
       <a
         :href="$store.getters.getTargetImageName"
-        download="test.png"
+        download="test.jpg"
         style="text-decoration:none"
       >
       <v-btn
@@ -282,8 +282,8 @@ export default {
     width: 50%;
   }
   .img {
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
   }
 </style>

@@ -4,7 +4,7 @@ export const state = () => ({
   */
   baseImageUrl: 'https://aws-networking-to-jpeg.s3-ap-northeast-1.amazonaws.com/',
   LB: 0,
-  EC2: 1,
+  EC2: 0,
   DB: 0,
   S3: 0,
   targetImageUrl: ``,
@@ -20,9 +20,9 @@ export const mutations = {
     state.testImage2 = value
   },
   */
-  setImageUrl(state) {
+  setImageUrl(state) { 
     state.targetImageUrl = `${state.LB}/${state.EC2}/${state.DB}/${state.S3}/image.png`
-    state.targetImageName = `${state.LB}${state.EC2}${state.DB}${state.S3}.png`
+    state.targetImageName = `${state.LB}${state.EC2}${state.DB}${state.S3}.jpg`
     state.s3ImageUrl = state.baseImageUrl + state.targetImageUrl
   },
   setLB(state, value) {
@@ -30,7 +30,7 @@ export const mutations = {
   },
   setEC2(state, value) {
     state.EC2 = value
-    state.LB = state.EC2 - 1
+    state.LB = state.EC2
   },
   setDB(state, value) {
     state.DB = value
