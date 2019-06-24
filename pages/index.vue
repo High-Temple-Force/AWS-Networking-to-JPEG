@@ -186,7 +186,7 @@ export default {
       rightDrawer: false,
       title: `Clage`,
       titleDiscription: `全ての人に、クラウドの価値を提供する`,
-      siteDiscription: `簡単なAWSネットワークを、画像で可視化しましょう。\n
+      siteDiscription: `
       選択肢をすべて選んだら、Downloadボタンを押して画像を入手してみてください。`,
       // switch1: true,
       // switch2: true,
@@ -231,13 +231,13 @@ export default {
     margin: 0 auto;
     width: 50%;
   }
-
   .content{
     width: 100%;
     padding: 1rem 0 0 1rem;
     margin: 1rem auto;
     box-shadow: 1px 1px 4px gray;
     border-radius: 10px;
+    background-color: rgba(255, 251, 251, 0.87)
   }
   a {
     color: whitesmoke;
