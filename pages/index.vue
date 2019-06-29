@@ -1,150 +1,155 @@
 <template>
   <v-app light>
-    <v-container mt-12 pt-40 fluid>
-      <v-toolbar
-        :clipped-left="clipped"
-        fixed
-        app
-        dense
-        flat
-        color="rgb(240, 240, 240)"
-       >
-        <v-toolbar-title v-text="title" />
-      </v-toolbar>
-      <br>
-      <br>
-      <br>
-      <v-flex >
-        <div>
-          <h3 v-text="titleDiscription"></h3>
-        </div>
-        <div>
-          <h4 v-text="siteDiscription"></h4>
-        </div>
-        <div class="content">
-          <v-tooltip right max-width=50%>
-            <template v-slot:activator="{ on }" >
-              <span v-on="on">EC2の数<v-icon v-on="on">info</v-icon></span>
-            </template>
-            <!--ここにEC2の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <div class="description">{{ec2Description}}</div>
-          </v-tooltip>
-          <v-radio-group
+    <v-toolbar
+      :clipped-left="clipped"
+      fixed
+      app
+      dense
+      flat
+      color="rgb(240, 240, 240)"
+    >
+      <v-toolbar-title v-text="title" />
+    </v-toolbar>
+
+    <v-container mt-5 fluid grid-list-md>
+
+      <v-layout row wrap >
+
+        <v-flex  md4 justify-start>
+          <div>
+            <h3 v-text="titleDiscription"></h3>
+          </div>
+          <div>
+            <h4 v-text="siteDiscription"></h4>
+          </div>
+
+          <div class="content">
+            <v-tooltip right max-width=50%>
+              <template v-slot:activator="{ on }" >
+                <span v-on="on">EC2の数<v-icon v-on="on">info</v-icon></span>
+              </template>
+              <!--ここにEC2の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+              <div class="description">{{ec2Description}}</div>
+            </v-tooltip>
+            <v-radio-group
               row
               v-model="ec2selected"
               @change="countec2"
             >
-            <v-radio
-              label=1
-              value=0
-            ></v-radio>
-            <v-radio
-              label=2
-              value=1
-            ></v-radio>
-          </v-radio-group>
-        </div>
-      </v-flex>
-      <v-flex>
-        <div class="content">
-          <v-tooltip right max-width=50%>
-            <template v-slot:activator="{ on }">
-            <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
-            </template>
-            <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span class="description">{{dbDescription}}</span>
-          </v-tooltip>
-          <v-radio-group
-              row
-              v-model="dbselected"
-              @change="selectdb"
+              <v-radio
+                label=1
+                value=0
+              ></v-radio>
+              <v-radio
+                label=2
+                value=1
+              ></v-radio>
+            </v-radio-group>
+          </div>
+
+          <div class="content">
+            <v-tooltip right max-width=50%>
+              <template v-slot:activator="{ on }">
+              <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
+              </template>
+              <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+              <span class="description">{{dbDescription}}</span>
+            </v-tooltip>
+            <v-radio-group
+                row
+                v-model="dbselected"
+                @change="selectdb"
+              >
+              <v-radio
+                label="RDS"
+                value=0
+              ></v-radio>
+              <v-radio
+                label="EC2"
+                value=1
+              ></v-radio>
+              <v-radio
+                label="ローカル"
+                value=2
+              ></v-radio>
+            </v-radio-group>
+          </div>
+
+          <div class="content">
+            <v-tooltip right max-width=50%>
+              <template v-slot:activator="{ on }">
+              <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
+              </template>
+              <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
+              <span class="description">{{s3Description}}</span>
+            </v-tooltip>
+            <v-radio-group
+                row
+                v-model="s3selected"
+                @change="selects3"
             >
-            <v-radio
-              label="RDS"
-              value=0
-            ></v-radio>
-            <v-radio
-              label="EC2"
-              value=1
-            ></v-radio>
-            <v-radio
-              label="ローカル"
-              value=2
-            ></v-radio>
-          </v-radio-group>
-        </div>
-      </v-flex>
-      <v-flex>
-        <div class="content">
-          <v-tooltip right max-width=50%>
-            <template v-slot:activator="{ on }">
-            <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
-            </template>
-            <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span class="description">{{s3Description}}</span>
-          </v-tooltip>
-          <v-radio-group
-              row
-              v-model="s3selected"
-              @change="selects3"
+              <v-radio
+                label="有り"
+                value=1
+              ></v-radio>
+              <v-radio
+                label="無し"
+                value=0
+              ></v-radio>
+            </v-radio-group>
+          </div>
+          <a
+          :href="$store.getters.getTargetImageName"
+          download="awsnetwork.jpg"
+          style="text-decoration:none"
           >
-            <v-radio
-              label="有り"
-              value=1
-            ></v-radio>
-            <v-radio
-              label="無し"
-              value=0
-            ></v-radio>
-          </v-radio-group>
-        </div>
-      </v-flex>
+            <v-btn
+              :loading="loading3"
+              :disabled="loading3"
+              color="blue-grey"
+              class="white--text"
+              @click="loader = 'loading3'"
+            >
+              <font color="white">Download</font>
+              <v-icon right dark>cloud_download</v-icon>
+            </v-btn>
+          </a>
+        </v-flex>
+
+        <v-flex   md6 >
+          <div class="img">
+        　  <img class="img" :src="$store.state.targetImageName" />
+          </div>
+        </v-flex>
+
+      </v-layout>
+
 
       <p>{{ this.$store.commit('setImageUrl') }}</p>
       <!--
         <p>{{ this.$store.state.targetImageUrl }}</p>
       -->
       <br>
-      <v-flex>
-      <a
-        :href="$store.getters.getTargetImageName"
-        download="awsnetwork.jpg"
-        style="text-decoration:none"
-      >
-      <v-btn
-        :loading="loading3"
-        :disabled="loading3"
-        color="blue-grey"
-        class="white--text"
-        @click="loader = 'loading3'"
-      >
-        <font color="white">Download</font>
-        <v-icon right dark>cloud_download</v-icon>
-      </v-btn>
-      </a>
-      </v-flex>
+
+
       <br>
       <!--ここに画像のUrlいれる-->
-      <v-flex>
-        <div class="img">
-      　  <img class="img" :src="$store.state.targetImageName" />
-        </div>
-      </v-flex>
 
       <br>
       <br>
+
       <v-footer
         :fixed="fixed"
         app
         color="rgb(240, 240, 240)"
       >
-      <v-flex
-        py-3
-        text-xs-center
-        xs12
-      >
-      <strong>&copy;2019 — PjKoenji</strong>
-      </v-flex>
+        <v-flex
+          py-3
+          text-xs-center
+          xs12
+        >
+          <strong>&copy;2019 — PjKoenji</strong>
+        </v-flex>
       </v-footer>
     </v-container >
   </v-app>
