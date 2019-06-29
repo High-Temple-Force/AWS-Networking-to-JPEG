@@ -11,10 +11,8 @@
       <v-toolbar-title v-text="title" />
     </v-toolbar>
 
-    <v-container mt-5 fluid grid-list-md>
-
+    <v-container fluid grid-list-md mt-5>
       <v-layout row wrap >
-
         <v-flex  md4 justify-start>
           <div>
             <h3 v-text="titleDiscription"></h3>
@@ -22,6 +20,7 @@
           <div>
             <h4 v-text="siteDiscription"></h4>
           </div>
+
 
           <div class="content">
             <v-tooltip right max-width=50%>
@@ -116,7 +115,7 @@
           </a>
         </v-flex>
 
-        <v-flex   md6 >
+        <v-flex  xs6>
           <div class="img">
         　  <img class="img" :src="$store.state.targetImageName" />
           </div>
@@ -225,6 +224,7 @@ export default {
 </script>
 
 <style>
+
   .container {
     text-align: left;
     margin: 0 auto;
@@ -245,7 +245,7 @@ export default {
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
-    width: 28%;
+    width: 20%;
   }
   .content{
     width: 100%;
@@ -297,7 +297,6 @@ export default {
 
   .img {
     width: 90%;
-    margin: 0 auto;
-    text-align: left;
+    height: auto;
   }
 </style>
