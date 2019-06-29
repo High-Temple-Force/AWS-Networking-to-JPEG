@@ -52,7 +52,7 @@
             <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span>{{dbDescription}}</span>
+            <span class="description">{{dbDescription}}</span>
           </v-tooltip>
           <v-radio-group
               row
@@ -81,7 +81,7 @@
             <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span>{{s3Description}}</span>
+            <span class="description">{{s3Description}}</span>
           </v-tooltip>
           <v-radio-group
               row
@@ -199,7 +199,7 @@ export default {
       s3selected: '',
       db:['RDS', 'EC2', 'ローカル'],
       row: null,
-      ec2selected: 2,
+      ec2selected: 1,
       ec2Description:'EC2はサーバです。サーバが故障した場合サービスは停止してしまいます。サーバの数を複数にすることでサービス停止の可能性を下げることができます。サーバを複数にした場合はロードバランサを設置し、処理を分散させます。', //ec2の説明、ポップアップの内容
       dbDescription:'データベースはWebアプリケーションを提供する際にユーザデータなどを保存しておく機能を持ちます。データベースの管理をAWSにやってもらう場合はRDS、自身で管理する場合はEC2かローカルを選択してください。ローカルとはWebサーバ内でデータベースを使用することです。', //dbの説明、ポップアップの内容
       s3Description:'S3はAWSのストレージサービスであり、様々なファイルを保管することができます。ここではHTMLファイルのバックアップを保管しています。', //s3の説明、ポップアップの内容
@@ -226,6 +226,13 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
+  .v-tooltip__content {
+    width: 50%;
+  }
+  .description{
+    width:100%;
+  }
+
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
@@ -278,9 +285,7 @@ export default {
       transform: rotate(360deg);
     }
   }
-  .v-tooltip__content {
-    width: 50%;
-  }
+  
   .img {
     width: 90%;
     margin: 0 auto;
