@@ -22,7 +22,7 @@
           <h4 v-text="siteDiscription"></h4>
         </div>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }" >
               <span v-on="on">EC2の数<v-icon v-on="on">info</v-icon></span>
             </template>
@@ -47,12 +47,12 @@
       </v-flex>
       <v-flex>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }">
             <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにDBの説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span>{{dbDescription}}</span>
+            <span class="description">{{dbDescription}}</span>
           </v-tooltip>
           <v-radio-group
               row
@@ -76,12 +76,12 @@
       </v-flex>
       <v-flex>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }">
             <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
             </template>
             <!--ここにS3の説明文章がポップアップで表示、内容は下記script内変数へ記述-->
-            <span>{{s3Description}}</span>
+            <span class="description">{{s3Description}}</span>
           </v-tooltip>
           <v-radio-group
               row
@@ -229,6 +229,14 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
+  .v-tooltip__content {
+    width: 50%;
+  }
+
+  .v-tooltip--right{
+    width: 50%;
+  }
+
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
@@ -281,9 +289,7 @@ export default {
       transform: rotate(360deg);
     }
   }
-  .v-tooltip__content {
-    width: 50%;
-  }
+
   .img {
     width: 90%;
     margin: 0 auto;
