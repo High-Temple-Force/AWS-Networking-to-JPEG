@@ -15,7 +15,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '' },
+      { rel: 'icon', type: 'image/png', href: 'cloudicon.png' },
       {
         rel: 'stylesheet',
         href:
