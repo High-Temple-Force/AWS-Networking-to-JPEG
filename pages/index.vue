@@ -99,21 +99,16 @@
           </v-radio-group>
         </div>
       </v-flex>
+
       <p>{{ this.$store.commit('setImageUrl') }}</p>
       <!--
         <p>{{ this.$store.state.targetImageUrl }}</p>
       -->
       <br>
-      <!--ここに画像のUrlいれる-->
-      <v-flex>
-        <div class="img">
-      　  <img class="img" :src="$store.state.targetImageName" />
-        </div>
-      </v-flex>
       <v-flex>
       <a
         :href="$store.getters.getTargetImageName"
-        download="test.jpg"
+        download="awsnetwork.jpg"
         style="text-decoration:none"
       >
       <v-btn
@@ -128,6 +123,14 @@
       </v-btn>
       </a>
       </v-flex>
+      <br>
+      <!--ここに画像のUrlいれる-->
+      <v-flex>
+        <div class="img">
+      　  <img class="img" :src="$store.state.targetImageName" />
+        </div>
+      </v-flex>
+
       <br>
       <br>
       <v-footer
@@ -173,6 +176,7 @@ export default {
     selects3 () {
       if (this.s3selected) this.$store.dispatch('writeS3', this.s3selected)
     },
+
   },
   methods:{
   },
@@ -185,9 +189,8 @@ export default {
       right: true,
       rightDrawer: false,
       title: `Clage Cloud`,
-      titleDiscription: `クラウドをもっと身近に。`,
-      siteDiscription: `
-      選択肢をすべて選んでみてください。`,
+      titleDiscription: `- クラウドをもっと身近にするツール -`,
+      siteDiscription: `選択肢をすべて選んで、ネットワーク図をダウンロードしてください。`,
       // switch1: true,
       // switch2: true,
       loader: null,
@@ -197,9 +200,9 @@ export default {
       loading4: false,
       dbselected: '',
       s3selected: '',
+      ec2selected: '',
       db:['RDS', 'EC2', 'ローカル'],
       row: null,
-      ec2selected: 2,
       ec2Description:'EC2はサーバです。サーバが故障した場合サービスは停止してしまいます。サーバの数を複数にすることでサービス停止の可能性を下げることができます。サーバを複数にした場合はロードバランサを設置し、処理を分散させます。', //ec2の説明、ポップアップの内容
       dbDescription:'データベースはWebアプリケーションを提供する際にユーザデータなどを保存しておく機能を持ちます。データベースの管理をAWSにやってもらう場合はRDS、自身で管理する場合はEC2かローカルを選択してください。ローカルとはWebサーバ内でデータベースを使用することです。', //dbの説明、ポップアップの内容
       s3Description:'S3はAWSのストレージサービスであり、様々なファイルを保管することができます。ここではHTMLファイルのバックアップを保管しています。', //s3の説明、ポップアップの内容
@@ -229,7 +232,7 @@ export default {
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
-    width: 35%;
+    width: 28%;
   }
   .content{
     width: 100%;
