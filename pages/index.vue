@@ -22,7 +22,7 @@
           <h4 v-text="siteDiscription"></h4>
         </div>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }" >
               <span v-on="on">EC2の数<v-icon v-on="on">info</v-icon></span>
             </template>
@@ -47,7 +47,7 @@
       </v-flex>
       <v-flex>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }">
             <span >データベースの種類 <v-icon v-on="on">info</v-icon> </span>
             </template>
@@ -76,7 +76,7 @@
       </v-flex>
       <v-flex>
         <div class="content">
-          <v-tooltip right>
+          <v-tooltip right max-width=50%>
             <template v-slot:activator="{ on }">
             <span >S3の有無  <v-icon v-on="on">info</v-icon> </span>
             </template>
@@ -185,7 +185,7 @@ export default {
       right: true,
       rightDrawer: false,
       title: `Clage Cloud`,
-      titleDiscription: `クラウドをもっと身近に。`,
+      titleDiscription: `クラウドをもっと身近にするためのツール。`,
       siteDiscription: `
       選択肢をすべて選んでみてください。`,
       // switch1: true,
@@ -229,8 +229,9 @@ export default {
   .v-tooltip__content {
     width: 50%;
   }
-  .description{
-    width:100%;
+
+  .v-tooltip--right{
+    width: 50%;
   }
 
   .v-toolbar__title{
