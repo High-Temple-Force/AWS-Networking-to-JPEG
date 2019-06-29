@@ -1,6 +1,6 @@
 <template>
   <v-app light>
-    <v-container mt-10 pt-40>
+    <v-container mt-12 pt-40 fluid>
       <v-toolbar
         :clipped-left="clipped"
         fixed
@@ -16,10 +16,10 @@
       <br>
       <v-flex >
         <div>
-          <h2 v-text="titleDiscription"></h2>
+          <h3 v-text="titleDiscription"></h3>
         </div>
         <div>
-          <h3 v-text="siteDiscription"></h3>
+          <h4 v-text="siteDiscription"></h4>
         </div>
         <div class="content">
           <v-tooltip right>
@@ -69,7 +69,7 @@
             ></v-radio>
             <v-radio
               label="ローカル"
-              :value=2
+              value=2
             ></v-radio>
           </v-radio-group>
         </div>
@@ -184,10 +184,10 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: `Clage`,
-      titleDiscription: `全ての人に、クラウドの価値を提供する`,
-      siteDiscription: `簡単なAWSネットワークを、画像で可視化しましょう。\n
-      選択肢をすべて選んだら、Downloadボタンを押して画像を入手してみてください。`,
+      title: `Clage Cloud`,
+      titleDiscription: `クラウドをもっと身近に。`,
+      siteDiscription: `
+      選択肢をすべて選んでみてください。`,
       // switch1: true,
       // switch2: true,
       loader: null,
@@ -236,15 +236,15 @@ export default {
   .v-toolbar__title{
     text-align: center;
     margin: 0 auto;
-    width: 50%;
+    width: 35%;
   }
-
   .content{
     width: 100%;
     padding: 1rem 0 0 1rem;
     margin: 1rem auto;
     box-shadow: 1px 1px 4px gray;
     border-radius: 10px;
+    background-color: rgba(255, 251, 251, 0.87)
   }
   a {
     color: whitesmoke;
