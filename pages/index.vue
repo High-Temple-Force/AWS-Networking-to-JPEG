@@ -298,7 +298,7 @@ export default {
   }
 
   .img {
-    width: 90%;
+    width: 95%;
     height: auto;
   }
 </style>
