@@ -1,7 +1,7 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "My epic Nuxt.js project",
+  "name": "ClageCloud",
+  "version": "1.1.0",
+  "description": "Cloudをもっと身近に。",
   "author": "bluesDD",
   "private": true,
   "scripts": {
@@ -12,7 +12,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "aws-sdk": "^2.466.0",
     "axios": "^0.19.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
@@ -32,5 +31,10 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
     "vue-jest": "^3.0.3"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "ISC"
 }
