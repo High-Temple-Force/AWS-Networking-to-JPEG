@@ -1,43 +1,25 @@
-AWS-Networking-to-JPEG
-We plan to launch "AWS Networking to JPEG".
+<h1 align="center">Welcome to ClageCloud 👋</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://twitter.com/@hicanda">
+    <img alt="Twitter: @hicanda" src="https://img.shields.io/twitter/follow/@hicanda.svg?style=social" target="_blank" />
+  </a>
+</p>
 
-moqup link : https://app.moqups.com/EK3IiCaxeQ/view/page/aa9df7b72
+> Cloudをもっと身近に。
 
-# test
+### 🏠 [Homepage](https://aws-network.clagecloud.com/)
 
-> My epic Nuxt.js project
+## Author
 
-## Build Setup
+👤 **bluesDD**
 
-``` bash
-# install dependencies
-$ npm install
+* Twitter: [@@hicanda](https://twitter.com/@hicanda)
+* Github: [@bluesDD](https://github.com/bluesDD)
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## Show your support
 
-# build for production and launch server
-$ npm run build
-$ npm start
+Give a ⭐️ if this project helped you!
 
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
-
-# Tips
-1. グラデーションの例
-https://webgradients.com/
-2. デザインの例
-https://dribbble.com/shots
-3. 環境変数の設定
-```
-$ npm i aws-sdk
-$ npm i dotenv
-```
-```.env
-ex)
-AWS_ACCESS_KEY = 'hogehoge'
-```
-
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

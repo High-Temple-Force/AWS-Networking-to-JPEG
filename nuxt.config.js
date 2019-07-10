@@ -15,7 +15,11 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
+<<<<<<< HEAD
       { rel: 'icon', type: 'image/png' , href: 'クラウドストレージアイコン (1).png'},
+=======
+      { rel: 'icon', type: 'image/png', href: 'cloudicon.png' },
+>>>>>>> 0aa8ab83fdaae83b2717b87b1b5570ab6c1da074
       {
         rel: 'stylesheet',
         href:

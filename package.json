@@ -1,7 +1,7 @@
 {
-  "name": "Clage",
+  "name": "ClageCloud",
   "version": "1.1.0",
-  "description": "Cloud をもっと身近に",
+  "description": "Cloudをもっと身近に。",
   "author": "bluesDD",
   "private": true,
   "scripts": {
