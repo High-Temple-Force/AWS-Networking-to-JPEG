@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> Cloudをもっと身近に。
+。
 
 ### 🏠 [Homepage](https://aws-network.clagecloud.com/)
 
